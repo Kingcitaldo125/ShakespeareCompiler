@@ -1,0 +1,68 @@
+S -> title dramatis-personae actlist
+
+io -> SPEAK_YOUR_MIND | OPEN_YOUR_MIND | OPEN_YOUR_HEART | LISTEN_TO_YOUR_HEART
+
+marticles -> SHAKESPEARE | ACT | YOU | ARTICLE | io | POSSESSIVE | lambda
+marticles -> _stackop | MORE | LESS | SUM | OF | AND | THE | TO | WE | IS | IF
+marticles -> POS_ADJ | NEG_ADJ | POS_NOUN | NEG_NOUN | ACTOR
+
+prime_wordlist -> marticles wordlist marticles | marticles | wordlist
+title -> prime_wordlist title | prime_wordlist peq
+
+multiple_words -> prime_wordlist multiple_words | prime_wordlist
+
+peq -> PERIOD | QUESTION | EXCLAMATION
+pe -> PERIOD | EXCLAMATION
+
+dramatis-personae -> ACTOR COMMA multiple_words peq dramatis-personae
+dramatis-personae -> ACTOR COMMA multiple_words peq
+
+actlist -> act actlist | act
+mactlist -> act actlist | lambda
+
+act -> ACT I COLON multiple_words peq scene
+act -> ACT SOME_ROMAN_NUMBERS COLON multiple_words peq scenelist
+scene -> SCENE SOME_ROMAN_NUMBERS COLON multiple_words peq scenelist
+scene -> SCENE I COLON multiple_words peq statement-list
+
+statement-list -> statement statement-list | statement
+statement -> enter-stmt | exit-stmt | line | mactlist | mscene
+
+line -> ACTOR COLON sentence-list
+
+sentence-list -> sentence sentence-list | sentence
+sentence -> assignment pe
+
+assignment -> YOU ARE AS adj AS arithmetic
+assignment -> YOU ARE arithmetic
+assignment -> YOU value
+assignment -> I AM arithmetic
+
+enter-stmt -> LBRACKET ENTER ACTOR RBRACKET
+exit-stmt -> LBRACKET EXIT ACTOR RBRACKET
+exit-stmt -> LBRACKET EXEUNT RBRACKET
+
+arithmetic -> ARTICLE value | THE value | POSSESSIVE value | YOU | MYSELF | YOURSELF | ACTOR
+arithmetic -> NOTHING
+arithmetic -> THE SUM OF arithmetic AND arithmetic
+arithmetic -> THE DIFFERENCE BETWEEN arithmetic AND arithmetic
+arithmetic -> THE PRODUCT OF arithmetic AND arithmetic
+arithmetic -> THE QUOTIENT OF arithmetic AND arithmetic
+arithmetic -> THE QUOTIENT BETWEEN arithmetic AND arithmetic
+arithmetic -> THE REMAINDER OF arithmetic AND arithmetic
+arithmetic -> THE REMAINDER BETWEEN arithmetic AND arithmetic
+arithmetic -> THE SQUARE OF arithmetic
+arithmetic -> THE CUBE OF arithmetic
+arithmetic -> THE SQUARE ROOT OF arithmetic
+arithmetic -> TWICE arithmetic
+arithmetic -> THRICE arithmetic
+arithmetic -> HALF arithmetic
+arithmetic -> BOTH arithmetic AND arithmetic
+arithmetic -> EITHER arithmetic OR arithmetic
+arithmetic -> THE OPPOSITE OF arithmetic
+
+value -> adj-list noun | noun
+
+noun -> POS_NOUN | NEG_NOUN
+adj-list -> adj adj-list | adj
+adj -> POS_ADJ | NEG_ADJ
