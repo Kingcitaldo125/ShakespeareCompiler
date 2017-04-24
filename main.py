@@ -115,8 +115,8 @@ def tokenize(dotest, debug):
         pretokens.append([xx.group(1), re.compile(xx.group(2))])
         terms.append(xx.group(1))
 
-    print(LineCounter, "lines in the Regular Expression file.")
-    print(terms)
+    #print(LineCounter, "lines in the Regular Expression file.")
+    #print(terms)
 
     # Populate terminals and nonterminals
     nonT = open('terminals.txt', 'w')
@@ -151,7 +151,16 @@ def tokenize(dotest, debug):
                     i = m.end()
                     break
         else:
-            raise TypeError("ERROR: Cannot match token", inputString[i])
+            errorTok = ""
+            for i in range(i, lengthofstr):
+                if inputString[i] == ' ' or inputString[i] == '\n' or inputString[i] == '.':
+                    break
+                if inputString[i] == '!':
+                    break
+                if inputString[i] == '?':
+                    break
+                errorTok += inputString[i]
+            raise TypeError("ERROR: Cannot match token", errorTok)
 
     effr.close()
     FILE.close()
@@ -321,10 +330,6 @@ def earleyParse(iput, gramm, SSym):
     # • <- a very friendly dot :)
 
     Ilen = len(iput)
-    #print("Terminals:")
-    #print(gramm.terminals)
-    #print("Non-Terminals:")
-    #print(gramm.nonterminals)
 
     if Ilen <= 1:
         return [iput, False, iput[0]]
@@ -346,9 +351,6 @@ def earleyParse(iput, gramm, SSym):
     col = 0
 
     for col in range(0, Ilen+1):
-        #print("\nCOLUMN:", col, '\n')
-        #if col == Ilen:
-            #print("\nGOT TO END!\n")
         flag = True
         while flag:
             flag = False
@@ -570,7 +572,7 @@ def main():
     #printGrammar(asdf)
 
     start_symbol = asdf.productions[0].lhs
-    print("Start Symbol:", start_symbol)
+    #print("Start Symbol:", start_symbol)
 
     #fir = computeFirst(asdf)
 

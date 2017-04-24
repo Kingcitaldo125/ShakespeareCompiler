@@ -1,13 +1,10 @@
-A minimal program.
+A somewhat minimal program.
 
-Romeo, a variable.
-Juliet, another variable.
+Romeo, should be three.
+Juliet, a container for one.
 
-Act I: The second assertive bit.
-Scene I: The first assertive bit.
+Act I: The Play Opens.
 
-[Enter Romeo]
-
-Romeo: You are a beautiful fancy toad.
+Scene I: We Begin.
 
 [Exeunt]

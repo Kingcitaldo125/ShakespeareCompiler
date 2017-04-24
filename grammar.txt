@@ -1,16 +1,14 @@
 S -> title dramatis-personae actlist
 
-io -> SPEAK_YOUR_MIND | OPEN_YOUR_MIND | OPEN_YOUR_HEART | LISTEN_TO_YOUR_HEART
-
-marticles -> SHAKESPEARE | ACT | YOU | ARTICLE | io | POSSESSIVE | lambda
-marticles -> _stackop | MORE | LESS | SUM | OF | AND | THE | TO | WE | IS | IF
-marticles -> POS_ADJ | NEG_ADJ | POS_NOUN | NEG_NOUN | ACTOR
+marticles -> ACTOR | PAUL | SHAKESPEARE | ACT | SCENE | YOU | ARTICLE | io | POSSESSIVE | lambda
+marticles -> _stackop | MORE | LESS | SUM | OF | AND | THE | TO | WE | IF | IS
+marticles -> POS_ADJ | NEG_ADJ | POS_NOUN | NEG_NOUN
 
 prime_wordlist -> marticles wordlist marticles | marticles | wordlist
+
 title -> prime_wordlist title | prime_wordlist peq
 
 multiple_words -> prime_wordlist multiple_words | prime_wordlist
-
 peq -> PERIOD | QUESTION | EXCLAMATION
 pe -> PERIOD | EXCLAMATION
 
@@ -18,29 +16,46 @@ dramatis-personae -> ACTOR COMMA multiple_words peq dramatis-personae
 dramatis-personae -> ACTOR COMMA multiple_words peq
 
 actlist -> act actlist | act
-mactlist -> act actlist | lambda
+mactlist -> actlist | lambda
 
-act -> ACT I COLON multiple_words peq scene
 act -> ACT SOME_ROMAN_NUMBERS COLON multiple_words peq scenelist
-scene -> SCENE SOME_ROMAN_NUMBERS COLON multiple_words peq scenelist
+act -> ACT I COLON multiple_words peq scenelist
+
+scenelist -> scene scenelist | scene
+mscene -> scene | lambda
+scene -> SCENE SOME_ROMAN_NUMBERS COLON multiple_words peq statement-list
 scene -> SCENE I COLON multiple_words peq statement-list
 
 statement-list -> statement statement-list | statement
 statement -> enter-stmt | exit-stmt | line | mactlist | mscene
 
+line -> ACTOR COLON optional-addressee sentence-list
 line -> ACTOR COLON sentence-list
 
+optional-addressee -> ACTOR COMMA
+optional-interjection -> interjection COMMA
+
+interjection -> NAY | YEA | VERILY | FORSOOTH | PERADVENTURE | PERCHANCE
+
 sentence-list -> sentence sentence-list | sentence
-sentence -> assignment pe
+sentence-list -> optional-interjection sentence sentence-list | optional-interjection sentence
+
+sentence -> io pe | assignment pe | goto pe | _stackop pe | stackop pe | question QUESTION | conditional
+
+io -> SPEAK_YOUR_MIND | OPEN_YOUR_MIND | OPEN_YOUR_HEART | LISTEN_TO_YOUR_HEART
+
+enter-stmt -> LBRACKET ENTER ACTOR RBRACKET
+enter-stmt -> LBRACKET ENTER actorlist RBRACKET
+
+exit-stmt -> LBRACKET EXIT ACTOR RBRACKET
+exit-stmt -> LBRACKET EXEUNT actorlist RBRACKET
+exit-stmt -> LBRACKET EXEUNT OMNES RBRACKET
+exit-stmt -> LBRACKET EXEUNT RBRACKET
 
 assignment -> YOU ARE AS adj AS arithmetic
 assignment -> YOU ARE arithmetic
 assignment -> YOU value
 assignment -> I AM arithmetic
-
-enter-stmt -> LBRACKET ENTER ACTOR RBRACKET
-exit-stmt -> LBRACKET EXIT ACTOR RBRACKET
-exit-stmt -> LBRACKET EXEUNT RBRACKET
 
 arithmetic -> ARTICLE value | THE value | POSSESSIVE value | YOU | MYSELF | YOURSELF | ACTOR
 arithmetic -> NOTHING
@@ -63,6 +78,43 @@ arithmetic -> THE OPPOSITE OF arithmetic
 
 value -> adj-list noun | noun
 
+actorlist -> ACTOR COMMA actorlist | ACTOR AND ACTOR
 noun -> POS_NOUN | NEG_NOUN
-adj-list -> adj adj-list | adj
 adj -> POS_ADJ | NEG_ADJ
+adj-list -> adj adj-list | adj
+
+let_us -> LET US | WE SHALL | WE MUST | WE OUGHT TO
+goto -> let_us PROCEED TO goto-target
+goto -> let_us PROCEED TO multiple_words
+goto -> let_us PROCEED POSTHASTE TO goto-target
+goto -> let_us PROCEED POSTHASTE TO multiple_words
+goto -> let_us RETURN
+
+goto-target -> ACT SOME_ROMAN_NUMBERS COMMA SCENE SOME_ROMAN_NUMBERS
+goto-target -> ACT I COMMA SCENE SOME_ROMAN_NUMBERS
+goto-target -> ACT SOME_ROMAN_NUMBERS COMMA SCENE I
+goto-target -> ACT I COMMA SCENE I
+goto-target -> ACT SOME_ROMAN_NUMBERS
+goto-target -> ACT I
+
+stackop -> REMEMBER arithmetic
+_stackop -> RECALL wordlist
+_stackop -> RECALL multiple_words
+
+question -> AM I comparison
+question -> IS arithmetic comparison
+question -> ARE YOU comparison
+
+comparison -> BETTER THAN arithmetic
+comparison -> MORE adj THAN arithmetic
+comparison -> AS adj AS arithmetic
+comparison -> WORSE THAN arithmetic
+comparison -> LESS adj THAN arithmetic
+comparison -> AT LEAST AS adj AS arithmetic
+comparison -> AT MOST AS adj AS arithmetic
+comparison -> DIFFERENT FROM arithmetic
+
+conditional -> IF SO COMMA optional-interjection sentence
+conditional -> IF NOT COMMA optional-interjection sentence
+conditional -> IF NOT COMMA sentence
+conditional -> IF SO COMMA sentence
