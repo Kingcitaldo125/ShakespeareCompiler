@@ -1,10 +1,12 @@
 A somewhat minimal program.
 
-Romeo, should be three.
-Juliet, a container for one.
+Romeo, a bastard with a toad.
 
-Act I: The Play Opens.
+Act I: the first act.
+Scene I: the first scene.
 
-Scene I: We Begin.
+[Enter Romeo]
+
+Romeo: Recall the sum of a fancy peach and a coy toad.
 
 [Exeunt]
