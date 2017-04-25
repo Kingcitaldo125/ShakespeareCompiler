@@ -1,57 +1,21 @@
 Fourscore and seven years ago.
 
-All The Goths, conducts the action.
-Shylock, two.
-Dogberry, y.
-George Bevis, n.
-Man, newline.
+All The Goths, a variable.
+Shylock, another variable.
+Soothsayer, the adversary.
 
-Act I: Setup.
-Scene I: Setting up the variables.
+Act I: The first act.
+Scene I: The first scene.
 
-[Enter Dogberry and George Bevis]
+[Enter All The Goths and Soothsayer]
+All The Goths: You are a fancy fancy fancy lad.
+[Exeunt]
 
-Dogberry: Thou are as lovely as the sum of a furry good meet sunny fancy safe
-    peach and the sum of a sweet ingenious charming peach and the sum of
-    an invulnerable amazing lad and a zany castle.
-
-George Bevis: You art the sum of an admirable good attractive proud yellow mighty
-    town and the sum of a pretty golden amazing black aunt and the sum of
-    a noiseless handsome fine choir and a cat!
-
-[Exit George Bevis]
-[Enter Man]
-
-Dogberry: You are the sum of a rich smooth bedazzled grace and a zany goat!
-
-Scene II: We ask if Shylock is not equal to negative one.
+Scene II: More stuff.
 
 [Enter All The Goths and Shylock]
 
-All The Goths:
-    You are a beautiful queen.
-    Are you different from a toad?
-    If so, let us proceed posthaste to Act I, Scene III.
-    If not, let us proceed posthaste to Act I, Scene IV.
+All The Goths: Open your heart. Remember the sum of Soothsayer and a toad. Open your heart.
+    Recall the scratchy feel of fiberglass insulation. Open your heart.
 
-All The Goths: Recall that we should never get here!
-
-[Exeunt]
-
-Scene III: Prints Y and then exits the program.
-
-[Enter All The Goths, Man and Dogberry]
-
-All The Goths: Dogberry, speak your mind.
-All The Goths: Man, speak your mind. Let us return.
-
-[Exit All The Goths]
-
-Scene IV: Prints N and then exits the program.
-
-[Enter All The Goths, Man and George Bevis]
-
-All The Goths: George Bevis, speak your mind.
-All The Goths: Man, speak your mind. Let us return.
-
-[Exit All The Goths]
+[Exeunt omnes]
