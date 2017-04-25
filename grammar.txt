@@ -2,7 +2,7 @@ S -> title dramatis-personae actlist
 
 marticles -> ACTOR | PAUL | SHAKESPEARE | ACT | SCENE | YOU | ARTICLE | io | POSSESSIVE | lambda
 marticles -> _stackop | MORE | MOST | LESS | SUM | OF | AND | THE | TOO | TO | WE | IN | IF | IS | SO | DO | LET | US
-marticles -> WE | SHALL | MUST | OUGHT | WE | OR | BETWEEN | HALF | OPPOSITE
+marticles -> WE | SHALL | MUST | OUGHT | WE | OR | BETWEEN | HALF | OPPOSITE | NOT
 marticles -> THAN | THEN | BETTER | WORSE | EXITS | EXIT | RECALLS | REMEMBERS
 marticles -> POS_ADJ | NEG_ADJ | POS_NOUN | NEG_NOUN
 
