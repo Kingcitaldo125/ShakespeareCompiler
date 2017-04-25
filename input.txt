@@ -1,21 +1,18 @@
 Fourscore and seven years ago.
 
-All The Goths, a variable.
-Shylock, another variable.
-Soothsayer, the adversary.
+All The Goths, should be three.
+Shylock, a container for one.
 
-Act I: The first act.
-Scene I: The first scene.
+Act I: The Play Opens.
 
-[Enter All The Goths and Soothsayer]
-All The Goths: You are a fancy fancy fancy lad.
-[Exeunt]
-
-Scene II: More stuff.
+Scene I: We Begin.
 
 [Enter All The Goths and Shylock]
 
-All The Goths: Open your heart. Remember the sum of Soothsayer and a toad. Open your heart.
-    Recall the scratchy feel of fiberglass insulation. Open your heart.
+Shylock: I am a queen.
 
-[Exeunt omnes]
+All The Goths: I am a king.
+
+All The Goths: Thou art a fancy fancy queen.
+
+[Exeunt]
