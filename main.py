@@ -300,6 +300,7 @@ def computeFollow(gramm, firstSet, nullableSet):
 def makeTree(I, N, iput):
     print("Item:", I)
     print("I.how:", I.how)
+
     if I.how == "INITIAL":
         N.sym = "S'"
         return N
@@ -588,7 +589,8 @@ def main():
     print("Parsing!")
     prs = earleyParse(tokes, asdf, start_symbol)
     if not prs[1]:
-        print("Failed to Parse. Gave up around", prs[2])
+        #print("Failed to Parse. Gave up around", prs[2])
+        print("Failed to Parse.")
     else:
         print("Completed Parse!")
 

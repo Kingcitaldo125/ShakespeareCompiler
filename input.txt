@@ -1,12 +1,23 @@
-A somewhat minimal program.
+Fourscore and seven years ago.
 
-Romeo, a bastard with a toad.
+All The Goths, a variable.
+Shylock, another variable.
 
-Act I: the first act.
-Scene I: the first scene.
+Act II: The first act.
+Scene I: The first scene.
 
-[Enter Romeo]
+[Enter All The Goths and Shylock]
 
-Romeo: Recall the sum of a fancy peach and a coy toad.
+All The Goths: You are a toad.
 
 [Exeunt]
+
+Act III: The first act.
+Scene I: The first scene.
+
+[Enter All The Goths and Shylock]
+
+All The Goths: You are a toad.
+
+[Exeunt]
+

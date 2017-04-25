@@ -1,7 +1,9 @@
 S -> title dramatis-personae actlist
 
 marticles -> ACTOR | PAUL | SHAKESPEARE | ACT | SCENE | YOU | ARTICLE | io | POSSESSIVE | lambda
-marticles -> _stackop | MORE | LESS | SUM | OF | AND | THE | TO | WE | IF | IS
+marticles -> _stackop | MORE | MOST | LESS | SUM | OF | AND | THE | TOO | TO | WE | IN | IF | IS | SO | DO | LET | US
+marticles -> WE | SHALL | MUST | OUGHT | WE | OR | BETWEEN | HALF | OPPOSITE
+marticles -> THAN | THEN | BETTER | WORSE | EXITS | EXIT | RECALLS | REMEMBERS
 marticles -> POS_ADJ | NEG_ADJ | POS_NOUN | NEG_NOUN
 
 prime_wordlist -> marticles wordlist marticles | marticles | wordlist
@@ -16,18 +18,21 @@ dramatis-personae -> ACTOR COMMA multiple_words peq dramatis-personae
 dramatis-personae -> ACTOR COMMA multiple_words peq
 
 actlist -> act actlist | act
-mactlist -> actlist | lambda
 
 act -> ACT SOME_ROMAN_NUMBERS COLON multiple_words peq scenelist
 act -> ACT I COLON multiple_words peq scenelist
 
 scenelist -> scene scenelist | scene
-mscene -> scene | lambda
 scene -> SCENE SOME_ROMAN_NUMBERS COLON multiple_words peq statement-list
 scene -> SCENE I COLON multiple_words peq statement-list
 
+mact -> ACT I COLON multiple_words peq
+mact -> ACT SOME_ROMAN_NUMBERS COLON multiple_words peq
+mscene -> SCENE SOME_ROMAN_NUMBERS COLON multiple_words peq
+mscene -> SCENE I COLON multiple_words peq
+
 statement-list -> statement statement-list | statement
-statement -> enter-stmt | exit-stmt | line | mactlist | mscene
+statement -> enter-stmt | exit-stmt | line | mact | mscene
 
 line -> ACTOR COLON optional-addressee sentence-list
 line -> ACTOR COLON sentence-list
@@ -115,6 +120,6 @@ comparison -> AT MOST AS adj AS arithmetic
 comparison -> DIFFERENT FROM arithmetic
 
 conditional -> IF SO COMMA optional-interjection sentence
+conditional -> IF SO COMMA sentence
 conditional -> IF NOT COMMA optional-interjection sentence
 conditional -> IF NOT COMMA sentence
-conditional -> IF SO COMMA sentence
