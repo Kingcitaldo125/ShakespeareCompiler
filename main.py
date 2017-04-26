@@ -308,7 +308,9 @@ def makeTree(I, N, iput):
         tnode = TreeNode(I.rhs[I.dpos-1], iput[I.column-1])
         print("Prepending Scan Node:", tnode)
         N.prepend_child(tnode)
-        return makeTree(I.how[1], N, iput)
+        nitem = Item(I.lhs[I.dpos], I.rhs[I.dpos-1], I.dpos, ["P"], I.column)
+        #return makeTree(I.how[1], N, iput)
+        return makeTree(nitem, N, iput)
     elif I.how[0] == "P":
         N.sym = "Adam is not great"
         return N
@@ -318,7 +320,7 @@ def makeTree(I, N, iput):
         partial = I.how[1] # Play with index
         print("Completed:", completed)
         print("Partial:", partial)
-        Q = TreeNode(completed[0])# completed.lhs
+        Q = TreeNode(completed[0], partial[0])# completed.lhs
         print("Prepending Complete Node:", Q)
         N.prepend_child(Q)
         makeTree(completed, Q, iput)
@@ -344,7 +346,7 @@ def earleyParse(iput, gramm, SSym):
 
     bSym = SSym
     SSym = "S'"
-    #Start_Node = TreeNode("S'", Token("S_PRIME", "S'", -1))
+    Start_Node = TreeNode("S'", Token("S_PRIME", "S'", -1))
 
     # Add the initial Start Symbol to the parse table.
     T[(0, 0)].add((SSym, bSym, 0))
