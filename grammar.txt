@@ -102,6 +102,9 @@ goto-target -> ACT I COMMA SCENE I
 goto-target -> ACT SOME_ROMAN_NUMBERS
 goto-target -> ACT I
 
+goto-target -> SCENE SOME_ROMAN_NUMBERS
+goto-target -> SCENE I
+
 stackop -> REMEMBER arithmetic
 _stackop -> RECALL wordlist
 _stackop -> RECALL multiple_words

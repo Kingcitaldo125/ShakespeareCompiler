@@ -8,6 +8,14 @@ Scene I: We Begin.
 
 [Enter Shylock]
 
-Shylock: I am a cunning queen. Open your mind.
+Shylock: I am a cunning queen. Open your mind. Let us proceed to Scene II.
 
 [Exeunt]
+
+Scene II: Another one.
+
+[Enter Shylock]
+
+Shylock: I am a cunning queen. Open your mind. Let us proceed to Scene II.
+
+[Exeunt Omnes]
