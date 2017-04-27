@@ -587,7 +587,7 @@ def printGrammar(g):
         print(ppp)
 
 
-def main(fname):
+def main(fname, asdf):
     global start_symbol
 
     tokes = tokenize(False, False, fname)
@@ -602,7 +602,7 @@ def main(fname):
         tkes.write(str(tt)+'\n')
     tkes.close()
 
-    asdf = createGrammar()
+    #asdf = createGrammar()
     #printGrammar(asdf)
 
     start_symbol = asdf.productions[0].lhs
@@ -630,19 +630,22 @@ def main(fname):
 
     return 0
 
+#batchParse = True
 batchParse = False
 
+asdf = createGrammar()
+
 if not batchParse:
-    x = main('input.txt')
+    x = main('input.txt', asdf)
 else:
     fails = open("fails.txt", 'w')
     passes = open("pass.txt", 'w')
 
-    for i in range(7, 160):
+    for i in range(100, 160):
         xstr = "x"
         xstr += str(i)
         print("Current File:", xstr + '.txt')
-        x = main(xstr+'.txt')
+        x = main(xstr+'.txt', asdf)
         if x == 0:
             passes.write(xstr)
             passes.write('\n')

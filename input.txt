@@ -8,7 +8,7 @@ Adam, the product.
 Othello, the quotient.
 Thieves, the remainder.
 Goth, the square.
-Simpcox's Wife, the square root.
+//Simpcox's Wife, the square root.
 King Richard II, twice.
 Simpcox, thrice.
 Portia, half.

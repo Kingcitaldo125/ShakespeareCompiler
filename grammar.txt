@@ -4,7 +4,8 @@ marticles -> ACTOR | PAUL | SHAKESPEARE | ACT | SCENE | YOU | ARTICLE | io | POS
 marticles -> _stackop | MORE | MOST | LESS | SUM | OF | AND | THE | TOO | TO | WE | IN | IF | IS | SO | DO | LET | US
 marticles -> WE | SHALL | MUST | OUGHT | WE | OR | BETWEEN | HALF | OPPOSITE | NOT | DIFFERENT | FROM
 marticles -> THAN | THEN | BETTER | WORSE | EXITS | EXIT | RECALLS | REMEMBERS | EMAN | PROCLAM
-marticles -> POS_ADJ | NEG_ADJ | POS_NOUN | NEG_NOUN
+marticles -> POS_ADJ | NEG_ADJ | POS_NOUN | NEG_NOUN | SPEAKAGE | QUOTIENT | REMAINDER | SQUARE | PRODUCT | DIFFERENCE
+marticles -> ROOT | TWICE | THRICE | HALF | BOTH | EITHER | OPPOSITE
 
 prime_wordlist -> marticles wordlist marticles | marticles | wordlist
 
