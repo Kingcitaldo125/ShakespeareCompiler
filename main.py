@@ -114,7 +114,7 @@ def tokenize(dotest, debug, fnm):
         LineCounter += 1
 
         xx = re.match(r'(.+) -> (.*)', line)
-        pretokens.append([xx.group(1), re.compile(xx.group(2))])
+        pretokens.append([xx.group(1), re.compile(xx.group(2), re.IGNORECASE)])
         terms.append(xx.group(1))
 
     #print(LineCounter, "lines in the Regular Expression file.")
@@ -630,7 +630,7 @@ def main(fname):
 
     return 0
 
-batchParse = True
+batchParse = False
 
 if not batchParse:
     x = main('input.txt')
@@ -638,7 +638,7 @@ else:
     fails = open("fails.txt", 'w')
     passes = open("pass.txt", 'w')
 
-    for i in range(100, 160):
+    for i in range(7, 160):
         xstr = "x"
         xstr += str(i)
         print("Current File:", xstr + '.txt')

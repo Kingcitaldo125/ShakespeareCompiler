@@ -24,10 +24,9 @@ Scene I: Get the values.
 [Enter All The Goths and Shylock]
 
 Shylock: Listen to your heart.
-All The Goths: Nay, listen to your heart!
+All The Goths: Nay, listen to YOUR heart!
 
 [Exit Shylock]
-
 [Enter Man]
 
 All The Goths: You are as good as the sum of a smooth stout-hearted brave king and
@@ -41,30 +40,38 @@ Scene II: Let us do some addition.
     Vaux and Slender]
 
 Messenger: Speed, you are as good as the sum of All The Goths and Shylock.
-
 Speed: Messenger, you are the difference between All The Goths and Shylock.
-
 Othello: Adam, you are as sunny as the product of All The Goths and Shylock.
-
 Adam: Othello, you are as awful as the quotient between All The Goths and Shylock.
-
 Thieves: Thieves, you are as worried as the remainder of All The Goths and Shylock.
-
 Poet: Goth, you are as fashionable as the square of All The Goths.
-
 Goth: Simpcox's Wife, you are as oozing as the square root of Shylock.
-
 Simpcox's Wife: King Richard II, you are twice All The Goths.
-
 King Richard II: Simpcox, you are thrice All The Goths.
-
 Simpcox: Portia, you are half All The Goths.
-
 Portia: Poet, you are both All The Goths and Shylock.
-
 Poet: Vaux, you are either All The Goths or Shylock.
-
 Vaux: Slender, you are the opposite of All The Goths.
 
 [Exeunt]
+
+Act II: Let us say some things.
+
+Scene I: Speakage.
+
+[Enter All The Goths and Man]
+All The Goths: Ye are the sum of a safe good noble mighty pretty amazing roman and
+the sum of a just gloved bold red daughter and the sum of a healthy
+mistletoe and a prince.  Speak your mind. Ye art the sum of a mighty
+sunny yellow wonderful white clearest uncle and the sum of a cunning
+black admirable just excellent king and the sum of a friendly healthy
+attractive wonderful cat and the sum of a cunning gentle animal and a
+visage.  Speak your mind. Ye art as sorry as the sum of a trustworthy
+charming invulnerable bluest warm friendly hero and the sum of a happy
+furry ingenious admirable honest cow and the sum of a new-fangled
+dazzling brave joy and the sum of a quick handsome lord and a
+moonbeam.  Speak your mind. Thou are as bedazzled as the sum of a
+royal golden dazzling princess and a golden daughter.  Speak your
+mind!
+[Exit Man]
 
