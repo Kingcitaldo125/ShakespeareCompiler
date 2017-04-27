@@ -10,12 +10,13 @@ start_symbol = 0
 
 
 class Item(object):
-    def __init__(self, lhs, rhs, dpos, how, column):
+    def __init__(self, lhs, rhs, dpos, origin, ref=[], cc=0):
         self.lhs = lhs
         self.rhs = rhs
         self.dpos = dpos
-        self.column = column
-        self.how = how
+        self.origin = origin
+        self.ref = ref #Array of Items
+        self.column = cc
 
     def __str__(self):
         return str(self.lhs)+str(self.rhs)
@@ -85,10 +86,11 @@ class Production(object):
 
 
 class TreeNode(object):
-    def __init__(self, sym, tok):
+    def __init__(self, sym, tok, parent=None, children=[]):
         self.sym = sym
         self.token = tok
-        self.children = []
+        self.parent = parent
+        self.children = children
 
     def __str__(self):
         return str(self.sym)
@@ -97,7 +99,7 @@ class TreeNode(object):
         self.children.append(chile)
 
 
-def tokenize(dotest, debug):
+def tokenize(dotest, debug, fnm):
     global pretokens, tokens, stringList, regexes
     LineCounter = 0
 
@@ -126,7 +128,7 @@ def tokenize(dotest, debug):
             nonT.write(' ')
     nonT.close()
 
-    effr = open('input.txt', 'r+')
+    effr = open(fnm, 'r+')
     inputString = ""
     for l in effr:
         inputString += str(l)
@@ -159,11 +161,16 @@ def tokenize(dotest, debug):
                     break
                 if inputString[i] == '?':
                     break
+                if inputString[i] == ',':
+                    break
                 errorTok += inputString[i]
-            raise TypeError("ERROR: Cannot match token", errorTok)
+            print("ERROR: Cannot match token", errorTok)
+            return 1
 
     effr.close()
     FILE.close()
+
+    tokens = token_container
 
     return token_container
 
@@ -297,37 +304,55 @@ def computeFollow(gramm, firstSet, nullableSet):
     return follow
 
 
-def makeTree(I, N, iput):
-    print("Item:", I)
-    print("I.how:", I.how)
+def makeTree(Item, TNode):
+    global tokens
 
-    if I.how == "INITIAL":
-        N.sym = "S'"
-        return N
-    elif I.how[0] == "S": #symbol            token
-        tnode = TreeNode(I.rhs[I.dpos-1], iput[I.column-1])
-        print("Prepending Scan Node:", tnode)
-        N.prepend_child(tnode)
-        nitem = Item(I.lhs[I.dpos], I.rhs[I.dpos-1], I.dpos, ["P"], I.column)
-        #return makeTree(I.how[1], N, iput)
-        return makeTree(nitem, N, iput)
-    elif I.how[0] == "P":
-        N.sym = "Adam is not great"
-        return N
-    elif I.how[0] == "C":
-        #Items
-        completed = I.how[2] # Play with index
-        partial = I.how[1] # Play with index
+    if Item.origin == "INITIAL":
+        print("INITIAL")
+        TNode.sym = "S'"
+        TNode.parent = None
+        TNode.children.append("S")
+        return TNode
+    elif Item.origin[0] == "S": #symbol            token
+        #print("Item LHS:", Item.lhs)
+        #print("Item RHS:", Item.rhs)
+        #print("Item DPOS:", Item.dpos)
+        #print("Item Ref:", Item.ref)
+        if Item.dpos > len(Item.rhs):
+            tnode = TreeNode(Item.rhs[Item.dpos - 2], tokens[Item.column])
+        elif Item.dpos == len(Item.rhs):
+            tnode = TreeNode(Item.rhs[Item.dpos - 1], tokens[Item.column])
+        elif Item.dpos == 0:
+            tnode = TreeNode(Item.rhs[0], tokens[Item.column])
+        else:
+            tnode = TreeNode(Item.rhs[Item.dpos - 1], tokens[Item.column])
+        #print("Prepending Scan Node:", tnode)
+        TNode.prepend_child(tnode)
+        return makeTree(Item.ref[0], tnode)
+    elif Item.origin[0] == "P":
+        print("Returning None")
+        return 0
+    elif Item.origin[0] == "C":
+        completed = Item.ref[0] # Play with index
+        partial = Item.ref[1] # Play with index
         print("Completed:", completed)
         print("Partial:", partial)
-        Q = TreeNode(completed[0], partial[0])# completed.lhs
+        print("Completed Ref:", completed.ref)
+        print("Partial Ref:", partial.ref)
+        Q = TreeNode(completed.lhs, "")
+        Q.parent = TNode
         print("Prepending Complete Node:", Q)
-        N.prepend_child(Q)
-        makeTree(completed, Q, iput)
-        return makeTree(partial, N, iput)
+        TNode.prepend_child(Q)
+        if len(completed.ref) == 0:
+            completed.ref = Item.ref
+        if len(partial.ref) == 0:
+            partial.ref = Item.ref
+        makeTree(completed, Q)
+        return makeTree(partial, TNode)
+    #print("No Ret")
 
 
-def earleyParse(iput, gramm, SSym):
+def earleyParse(iput, gramm, SSym, genTree):
     global tokens
 
     # • <- a very friendly dot :)
@@ -444,18 +469,20 @@ def earleyParse(iput, gramm, SSym):
                                             #print("Added", newerthing, "to complete set.", "T[", row, "][", col + 1, "]")
                                             flag = True
                                             #print("Set Flag in COMPLETE.\n")
-                                            how.append([lhs, rhs, dpos]) #Partial
-                                            how.append(newerthing) #Complete
 
-                        #if row == 0 and col == 0:
-                        #    if lhs == "S'" and rhs == "S":
-                        #        print(lhs, rhs, dpos)
-                        #        how = "INITIAL"
-                        #titem = Item(lhs, rhs, dpos, how, col)
-                        #print("Titem:", titem)
-                        #Start_Node = makeTree(titem, Start_Node, iput)
-                        #print("New Node:", Start_Node)
-                        #print("Node's Children amount:", len(Start_Node.children))
+                                            if genTree:
+                                                ref = []
+                                                ref.append(Item(lhs2, Nrhs2, dpos2 + 1, lhs))  # Complete
+                                                if Start_Node != None:
+                                                    ref.append(Item(lhs, rhs, dpos2, Start_Node.sym))  # Partial
+                                                else:
+                                                    ref.append(Item(lhs, rhs, dpos2, lhs))  # Partial
+
+                                                titem = Item(lhs, rhs, dpos, how, ref, col)
+                                                print(type(Start_Node))
+                                                if Start_Node != None:
+                                                    print("Node's Children amount:", len(Start_Node.children))
+                                                    Start_Node = makeTree(titem, Start_Node)
 
     cParse = False
 
@@ -560,10 +587,14 @@ def printGrammar(g):
         print(ppp)
 
 
-def main():
+def main(fname):
     global start_symbol
 
-    tokes = tokenize(False, False)
+    tokes = tokenize(False, False, fname)
+
+    if tokes == 1:
+        print("Failed to Tokenize.")
+        return 1
 
     tkes = open('tokens.txt', 'w')
 
@@ -589,11 +620,35 @@ def main():
     #print('')
 
     print("Parsing!")
-    prs = earleyParse(tokes, asdf, start_symbol)
+    prs = earleyParse(tokes, asdf, start_symbol, False)
     if not prs[1]:
         #print("Failed to Parse. Gave up around", prs[2])
         print("Failed to Parse.")
+        return 1
     else:
         print("Completed Parse!")
 
-main()
+    return 0
+
+batchParse = True
+
+if not batchParse:
+    x = main('input.txt')
+else:
+    fails = open("fails.txt", 'w')
+    passes = open("pass.txt", 'w')
+
+    for i in range(100, 160):
+        xstr = "x"
+        xstr += str(i)
+        print("Current File:", xstr + '.txt')
+        x = main(xstr+'.txt')
+        if x == 0:
+            passes.write(xstr)
+            passes.write('\n')
+        else:
+            fails.write(xstr)
+            fails.write('\n')
+
+    fails.close()
+    passes.close()
