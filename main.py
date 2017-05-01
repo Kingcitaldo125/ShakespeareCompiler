@@ -1,4 +1,5 @@
 import re
+import sys
 
 tokens = []
 pretokens = []
@@ -636,13 +637,21 @@ batchParse = False
 asdf = createGrammar()
 
 if not batchParse:
+    #zv = input(sys.argv[1])
+    #print(zv)
+
     x = main('input.txt', asdf)
+
+    #if x == 1:
+    #    sys.exit(-1)
+    #else:
+    #    sys.exit(0)
 else:
     fails = open("fails.txt", 'w')
     passes = open("pass.txt", 'w')
 
-    for i in range(100, 160):
-        xstr = "x"
+    for i in range(79, 136):
+        xstr = "t"
         xstr += str(i)
         print("Current File:", xstr + '.txt')
         x = main(xstr+'.txt', asdf)

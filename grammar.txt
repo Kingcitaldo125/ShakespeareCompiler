@@ -1,11 +1,12 @@
 S -> title dramatis-personae actlist
 
-marticles -> ACTOR | PAUL | SHAKESPEARE | ACT | SCENE | YOU | ARTICLE | io | POSSESSIVE | lambda
+marticles -> ACTOR | ACTOR POSTROPHE | PAUL | SHAKESPEARE | ARE | ACT | SCENE | YOU | ARTICLE | io | POSSESSIVE | lambda
 marticles -> _stackop | MORE | MOST | LESS | SUM | OF | AND | THE | TOO | TO | WE | IN | IF | IS | SO | DO | LET | US
 marticles -> WE | SHALL | MUST | OUGHT | WE | OR | BETWEEN | HALF | OPPOSITE | NOT | DIFFERENT | FROM
-marticles -> THAN | THEN | BETTER | WORSE | EXITS | EXIT | RECALLS | REMEMBERS | EMAN | PROCLAM
+marticles -> THAN | THEN | BETTER | WORSE | EXITS | EXIT | RECALLS | REMEMBERS | EMAN | PROCLAM | AT | EIIS
 marticles -> POS_ADJ | NEG_ADJ | POS_NOUN | NEG_NOUN | SPEAKAGE | QUOTIENT | REMAINDER | SQUARE | PRODUCT | DIFFERENCE
-marticles -> ROOT | TWICE | THRICE | HALF | BOTH | EITHER | OPPOSITE
+marticles -> ROOT | TWICE | THRICE | HALF | BOTH | PROCEED | POSTHASTE | EITHER | OPPOSITE | NOTHING | I | SOME_ROMAN_NUMBERS
+marticles -> ENTER | ENTERS | EXIT | EXITS | AM | AS | MYSELF | YOURSELF | DNUMBERS
 
 prime_wordlist -> marticles wordlist marticles | marticles | wordlist
 
@@ -21,11 +22,11 @@ dramatis-personae -> ACTOR COMMA multiple_words peq
 actlist -> act actlist | act
 
 act -> ACT SOME_ROMAN_NUMBERS COLON multiple_words peq scenelist
-act -> ACT I COLON multiple_words peq scenelist
+act -> ACT I COLON title scenelist
 
 scenelist -> scene scenelist | scene
 scene -> SCENE SOME_ROMAN_NUMBERS COLON multiple_words peq statement-list
-scene -> SCENE I COLON multiple_words peq statement-list
+scene -> SCENE I COLON title statement-list
 
 mact -> ACT I COLON multiple_words peq
 mact -> ACT SOME_ROMAN_NUMBERS COLON multiple_words peq
@@ -46,8 +47,10 @@ interjection -> NAY | YEA | VERILY | FORSOOTH | PERADVENTURE | PERCHANCE
 sentence-list -> sentence sentence-list | sentence
 sentence-list -> optional-interjection sentence sentence-list | optional-interjection sentence
 
-sentence -> io pe | assignment pe | goto pe | _stackop pe | stackop pe | question QUESTION | conditional
+sentence -> io pe | assignment pe | goto pe | _stackop pe | stackop pe
+sentence -> conditional | question QUESTION
 
+io -> SPEAK YOUR MIND | OPEN YOUR MIND | OPEN YOUR HEART | LISTEN TO YOUR HEART
 io -> SPEAK_YOUR_MIND | OPEN_YOUR_MIND | OPEN_YOUR_HEART | LISTEN_TO_YOUR_HEART
 
 enter-stmt -> LBRACKET ENTER ACTOR RBRACKET
@@ -107,7 +110,6 @@ goto-target -> SCENE SOME_ROMAN_NUMBERS
 goto-target -> SCENE I
 
 stackop -> REMEMBER arithmetic
-_stackop -> RECALL wordlist
 _stackop -> RECALL multiple_words
 
 question -> AM I comparison

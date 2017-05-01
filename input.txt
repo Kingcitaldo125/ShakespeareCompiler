@@ -1,77 +1,196 @@
-Fourscore and seven years ago.
+nine three This is correct number seven four.
 
-All The Goths, our first variable.
-Shylock, our second variable.
-Speed, the sum.
-Messenger, the difference.
-Adam, the product.
-Othello, the quotient.
-Thieves, the remainder.
-Goth, the square.
-//Simpcox's Wife, the square root.
-King Richard II, twice.
-Simpcox, thrice.
-Portia, half.
-Poet, both.
-Vaux, either.
-Slender, the opposite.
-Man, a newline and such.
+Romeo, nine four.
+Juliet, nine five.
+Tybalt, nine six.
+Benvolio, nine seven.
+Lady Macbeth, nine eight.
+Doctor Butts, nine nine.
+Bottom, one zero zero.
+All the Goths, one zero one.
+All Conspirators, one zero two.
+Bastard of Orleans, one zero three.
+Cinna the Poet, one zero four.
+Henry VIII, one zero five.
+Horatio, one zero six.
+Henry IV, who does nothing.
+Henry VI, nosepicker.
+Old Man, one zero seven.
+Old Gobbo, one zero eight.
+The Ghost, one zero nine.
+Vaux, one one zero.
+Thomas Wart, one one one.
 
-Act I: The reception.
+Act I: one one two.
 
-Scene I: Get the values.
+Scene I: one one three.
 
-[Enter All The Goths and Shylock]
+[Enter Henry VIII and Thomas Wart ]
 
-Shylock: Listen to your heart.
-All The Goths: Nay, listen to YOUR heart!
+Thomas Wart: You are as ugly as thrice Henry VIII!
 
-[Exit Shylock]
-[Enter Man]
+[Exit Thomas Wart ]
+[Enter Benvolio ]
 
-All The Goths: You are as good as the sum of a smooth stout-hearted brave king and
-    a white moonbeam.
-
-[Exeunt]
-
-Scene II: Let us do some addition.
-
-[Enter Speed, Messenger, Adam, Othello, Thieves, Goth, Simpcox's Wife, King Richard II, Simpcox, Poet, Portia,
-    Vaux and Slender]
-
-Messenger: Speed, you are as good as the sum of All The Goths and Shylock.
-Speed: Messenger, you are the difference between All The Goths and Shylock.
-Othello: Adam, you are as sunny as the product of All The Goths and Shylock.
-Adam: Othello, you are as awful as the quotient between All The Goths and Shylock.
-Thieves: Thieves, you are as worried as the remainder of All The Goths and Shylock.
-Poet: Goth, you are as fashionable as the square of All The Goths.
-Goth: Simpcox's Wife, you are as oozing as the square root of Shylock.
-Simpcox's Wife: King Richard II, you are twice All The Goths.
-King Richard II: Simpcox, you are thrice All The Goths.
-Simpcox: Portia, you are half All The Goths.
-Portia: Poet, you are both All The Goths and Shylock.
-Poet: Vaux, you are either All The Goths or Shylock.
-Vaux: Slender, you are the opposite of All The Goths.
+Henry VIII: You are as beautiful as twice Henry VIII.
 
 [Exeunt]
 
-Act II: Let us say some things.
+[Enter Cinna the Poet and Romeo]
+Romeo: You are as good as the sum of a fancy amazing king and a queen.
 
-Scene I: Speakage.
+[Exeunt]
 
-[Enter All The Goths and Man]
-All The Goths: Ye are the sum of a safe good noble mighty pretty amazing roman and
-the sum of a just gloved bold red daughter and the sum of a healthy
-mistletoe and a prince.  Speak your mind. Ye art the sum of a mighty
-sunny yellow wonderful white clearest uncle and the sum of a cunning
-black admirable just excellent king and the sum of a friendly healthy
-attractive wonderful cat and the sum of a cunning gentle animal and a
-visage.  Speak your mind. Ye art as sorry as the sum of a trustworthy
-charming invulnerable bluest warm friendly hero and the sum of a happy
-furry ingenious admirable honest cow and the sum of a new-fangled
-dazzling brave joy and the sum of a quick handsome lord and a
-moonbeam.  Speak your mind. Thou are as bedazzled as the sum of a
-royal golden dazzling princess and a golden daughter.  Speak your
-mind!
-[Exit Man]
+[Enter Vaux]
+Vaux: I am the sum of a king and a fancy lad.
+[Exit Vaux]
+
+[Enter Old Man]
+Old Man: I am a toad.
+[Exit Old Man]
+
+[Enter All the Goths]
+All the Goths: I am the sum of a king and a fancy fancy fancy lad.
+[Exeunt]
+
+[Enter Romeo]
+Romeo: I am the sum of All the Goths and All the Goths.
+[Exit Romeo]
+
+Scene II: one one four.
+
+[Enter Horatio and Romeo ]
+
+Romeo: You are as vile as the square of Cinna the Poet. Open your heart.
+
+[Exeunt Horatio and Romeo ]
+[Enter Tybalt and Bottom ]
+
+Bottom: You are as good as the sum of Tybalt and Old Man!
+
+[Exeunt]
+
+Act II: one one five.
+
+Scene I: one one six.
+
+[Enter Benvolio and Cinna the Poet ]
+
+Benvolio: You are as beautiful as the difference between
+    Cinna the Poet and Old Gobbo!
+
+[Exeunt Benvolio and Cinna the Poet ]
+[Enter Bastard of Orleans and Thomas Wart ]
+
+Thomas Wart: You are as bad as the difference between Doctor Butts and Vaux.
+
+[Exeunt]
+
+Scene II: one one seven.
+
+[Enter Old Gobbo and Romeo ]
+
+Old Gobbo: You are as vile as thrice Thomas Wart. Open your heart.
+
+[Exeunt Old Gobbo and Romeo ]
+[Enter Tybalt and Doctor Butts ]
+
+Tybalt: You are as bad as half Tybalt.
+
+[Exeunt]
+
+Act III: one one eight.
+
+Scene I: one one nine.
+
+[Enter Juliet and Doctor Butts ]
+
+Juliet: I am a fancy amazing queen.
+    You are as bad as the quotient of Henry VIII and Juliet.
+
+[Exeunt Juliet and Doctor Butts ]
+[Enter Henry VIII and Old Man ]
+
+Henry VIII: You are as bad as the sum of Bottom and Henry VIII!
+
+[Exeunt]
+
+Scene II: one two zero.
+
+[Enter The Ghost and Horatio ]
+
+The Ghost: You are as ugly as the square of All the Goths! Open your heart.
+
+[Exeunt The Ghost and Horatio ]
+[Enter Doctor Butts and Old Man ]
+
+Old Man: You are as vile as the quotient of Cinna the Poet and Juliet.
+
+[Exeunt]
+
+Act IV: one two one.
+
+Scene I: one two two.
+
+[Enter Henry VIII and Bastard of Orleans ]
+
+Bastard of Orleans: You are as vile as the square root of Old Gobbo.
+
+[Exit Henry VIII ]
+[Enter Lady Macbeth ]
+
+Lady Macbeth: You are as ugly as the difference between Horatio and Tybalt.
+
+[Exeunt]
+
+Scene II: one two three.
+
+[Enter The Ghost and Thomas Wart ]
+
+The Ghost: You are as vile as half Vaux!
+
+[Exeunt The Ghost and Thomas Wart ]
+[Enter Benvolio and Old Gobbo ]
+
+Old Gobbo: You are as ugly as the cube of Bottom.
+
+[Exeunt]
+
+Act V: one two four.
+
+Scene I: one two five.
+
+
+
+[Enter Benvolio and Doctor Butts ]
+
+Benvolio: You are as bad as the sum of Thomas Wart and The Ghost.
+
+[Exeunt Benvolio and Doctor Butts ]
+
+[Enter All the Goths and Doctor Butts ]
+
+All the Goths: You are as old as a king.
+
+[Exeunt]
+
+[Enter Tybalt and Vaux ]
+
+Tybalt: You are as bad as the sum of yourself and the quotient of Romeo and Doctor Butts!
+
+[Exeunt]
+
+Scene II: one two six.
+
+[Enter The Ghost and Juliet ]
+
+Juliet: You are as good as half Cinna the Poet.
+
+[Exeunt The Ghost and Juliet ]
+[Enter Benvolio and Bottom ]
+
+Benvolio: You are as bad as the sum of Romeo and Bastard of Orleans!
+
+[Exeunt]
+
 
