@@ -631,8 +631,8 @@ def main(fname, asdf):
 
     return 0
 
-#batchParse = True
-batchParse = False
+batchParse = True
+#batchParse = False
 
 asdf = createGrammar()
 
@@ -650,17 +650,21 @@ else:
     fails = open("fails.txt", 'w')
     passes = open("pass.txt", 'w')
 
-    for i in range(79, 136):
+    crashList = ['t40.txt', 't106.txt', 't116.txt', 't126.txt', 't136.txt', 't159.txt']
+
+    for i in range(1, 159):
         xstr = "t"
         xstr += str(i)
         print("Current File:", xstr + '.txt')
-        x = main(xstr+'.txt', asdf)
-        if x == 0:
-            passes.write(xstr)
-            passes.write('\n')
-        else:
-            fails.write(xstr)
-            fails.write('\n')
+        fstr = xstr+'.txt'
+        if fstr not in crashList:
+            x = main(fstr, asdf)
+            if x == 0:
+                passes.write(xstr)
+                passes.write('\n')
+            else:
+                fails.write(xstr)
+                fails.write('\n')
 
     fails.close()
     passes.close()
