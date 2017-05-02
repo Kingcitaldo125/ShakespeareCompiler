@@ -673,17 +673,19 @@ else:
     crashList = ['x157.txt', 't40.txt', 't106.txt', 't116.txt', 't126.txt', 't136.txt', 't159.txt']
 
     for i in range(1, 160):
-        xstr = "x"
+        xstr = "t"
         xstr += str(i)
         print("Current File:", xstr + '.txt')
         fstr = xstr+'.txt'
         if fstr not in crashList:
             x = main(fstr, asdf)
             if x == 0:
+                print("Success.")
                 passes.write(xstr)
                 passes.write('\n')
                 passes.flush()
             else:
+                print("Failure.")
                 fails.write(xstr)
                 fails.write('\n')
                 passes.flush()
