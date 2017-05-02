@@ -122,7 +122,7 @@ def tokenize(dotest, debug, fnm):
     #print(terms)
 
     # Populate terminals and nonterminals
-    nonT = open('terminals.txt', 'w')
+    nonT = open('germinals.txt', 'w')
     for nn in range(len(terms)):
         nonT.write(terms[nn])
         if nn < len(terms)-1:
@@ -353,7 +353,7 @@ def makeTree(Item, TNode):
     #print("No Ret")
 
 
-def earleyParse(iput, gramm, SSym, genTree):
+def earleyParse(iput, gramm, SSym, genTree, printCols):
     global tokens
 
     # • <- a very friendly dot :)
@@ -365,22 +365,26 @@ def earleyParse(iput, gramm, SSym, genTree):
 
     T = {}
 
-    for i in range(Ilen+1):
-        for j in range(Ilen+1):
-            if j >= i:
-                T[(i, j)] = set()
+    #for i in range(Ilen+1):
+    #    for j in range(Ilen+1):
+    #        if j >= i:
+    #            T[(i, j)] = set()
 
     bSym = SSym
     SSym = "S'"
-    Start_Node = TreeNode("S'", Token("S_PRIME", "S'", -1))
+    #Start_Node = TreeNode("S'", Token("S_PRIME", "S'", -1))
 
     # Add the initial Start Symbol to the parse table.
-    T[(0, 0)].add((SSym, bSym, 0))
 
-    col = 0
+    T[(0, 0)] = [(SSym, bSym, 0)]
+
+    #col = 0
 
     for col in range(0, Ilen+1):
         flag = True
+        if printCols:
+            if col % 10 == 0 or col > Ilen - 10:
+                print(Ilen, col)
         while flag:
             flag = False
             for row in range(0, col + 1):
@@ -390,7 +394,7 @@ def earleyParse(iput, gramm, SSym, genTree):
                         rhs = I[1].split(' ')
                         dpos = I[2]
 
-                        how = "INITIAL"
+                        #how = "INITIAL"
                         tadpos = ''
                         if dpos == 0:
                             tadpos = rhs[0]
@@ -402,7 +406,7 @@ def earleyParse(iput, gramm, SSym, genTree):
                         if col < Ilen:
                             if iput[col].symbol == tadpos or iput[col].lexeme == tadpos:
                                 # SCAN
-                                how = ["S"]
+                                #how = ["S"]
                                 #print("SCANNING")
                                 nrhs = ""
                                 for xx in rhs:
@@ -411,19 +415,27 @@ def earleyParse(iput, gramm, SSym, genTree):
                                 nrhs = nrhs[:-1]
 
                                 I2New = (lhs, nrhs, dpos + 1)
-                                if I2New not in T[(row, col + 1)]:
-                                    T[(row, col + 1)].add(I2New)
-                                    #print("Added Scan set", I2New, "to T[", row, "][", col + 1, "]")
+                                if T.get((row, col+1)) is not None:
+                                    if I2New not in T[(row, col + 1)]:
+                                        T[(row, col + 1)].append(I2New)
+                                        #print("Added Scan set", I2New, "to T[", row, "][", col + 1, "]")
+                                        flag = True
+                                        #print("Set Flag in SCAN.\n")
+                                        #how.append(I2New)
+                                else:
+                                    T[(row, col + 1)] = []
+                                    T[(row, col + 1)].append(I2New)
+                                    # print("Added Scan set", I2New, "to T[", row, "][", col + 1, "]")
                                     flag = True
-                                    #print("Set Flag in SCAN.\n")
-                                    how.append(I2New)
+                                    # print("Set Flag in SCAN.\n")
+                                    # how.append(I2New)
 
                         if tadpos in gramm.nonterminals:
                             # PREDICT
                             # Add all productions with lhs of rhs[dpos] to T[col][col]
                             # Might set flag to True
                             # print("PREDICTING")
-                            how = ["P"]
+                            #how = ["P"]
                             for prodd in gramm.productions:
                                 nrhs = ""
                                 for kl in range(len(prodd.rhs)):
@@ -433,61 +445,72 @@ def earleyParse(iput, gramm, SSym, genTree):
 
                                 newThing = (prodd.lhs, nrhs, 0)
                                 if prodd.lhs == rhs[dpos]:
-                                    if newThing not in T[(col, col)]:
-                                        T[(col, col)].add(newThing)
-                                        #print("Added", newThing, "to predict set", "T[", col, "][", col, "]")
+                                    if T.get((col, col)) is not None:
+                                        if newThing not in T[(col, col)]:
+                                            #if T.get((col, col)) is None:
+                                            #    T[(col, col)] = []
+                                            T[(col, col)].append(newThing)
+                                            flag = True
+                                            #how.append(newThing)
+                                    else:
+                                        T[(col, col)] = []
+                                        T[(col, col)].append(newThing)
+                                        # print("Added Scan set", I2New, "to T[", row, "][", col + 1, "]")
                                         flag = True
-                                        #print("Set Flag in PREDICT.\n")
-                                        how.append(newThing)
 
                         # COMPLETE
                         if tadpos == '':
                             # print("Completing?")
-                            how = ["C"]
+                            #how = ["C"]
                             for k in range(0, row+1):
-                                for Itwo in T[(k, row)].copy():
-                                    lhs2 = Itwo[0]
-                                    rhs2 = Itwo[1].split(' ')
-                                    dpos2 = Itwo[2]
+                                if T.get((k, row)) is not None:
+                                    for Itwo in T[(k, row)].copy():
+                                        lhs2 = Itwo[0]
+                                        rhs2 = Itwo[1].split(' ')
+                                        dpos2 = Itwo[2]
 
-                                    # I2.rhs[I2.dpos]
-                                    ItwoDposSide = 0
-                                    if dpos2 < len(rhs2):
-                                        ItwoDposSide = rhs2[dpos2]
+                                        # I2.rhs[I2.dpos]
+                                        ItwoDposSide = 0
+                                        if dpos2 < len(rhs2):
+                                            ItwoDposSide = rhs2[dpos2]
 
-                                    # if I.lhs matches I2.rhs[I2.dpos]:
-                                    if lhs == ItwoDposSide:
-                                        Nrhs2 = ""
-                                        for fk in rhs2:
-                                            Nrhs2 += fk
-                                            Nrhs2 += ' '
-                                        Nrhs2 = Nrhs2[:-1]
+                                        # if I.lhs matches I2.rhs[I2.dpos]:
+                                        if lhs == ItwoDposSide:
+                                            Nrhs2 = ""
+                                            for fk in rhs2:
+                                                Nrhs2 += fk
+                                                Nrhs2 += ' '
+                                            Nrhs2 = Nrhs2[:-1]
 
-                                        newerthing = (lhs2, Nrhs2, dpos2 + 1)
-                                        if newerthing not in T[(k, col)]:
-                                            #print("COMPLETING")
-                                            T[(k, col)].add(newerthing)
-                                            #print("Added", newerthing, "to complete set.", "T[", row, "][", col + 1, "]")
-                                            flag = True
-                                            #print("Set Flag in COMPLETE.\n")
+                                            newerthing = (lhs2, Nrhs2, dpos2 + 1)
+                                            if T.get((k, col)) is not None:
+                                                if newerthing not in T[(k, col)]:
+                                                    T[(k, col)].append(newerthing)
+                                                    flag = True
+                                            else:
+                                                T[(k, col)] = []
+                                                T[(k, col)].append(newerthing)
+                                                flag = True
 
                                             if genTree:
                                                 ref = []
                                                 ref.append(Item(lhs2, Nrhs2, dpos2 + 1, lhs))  # Complete
-                                                if Start_Node != None:
-                                                    ref.append(Item(lhs, rhs, dpos2, Start_Node.sym))  # Partial
-                                                else:
-                                                    ref.append(Item(lhs, rhs, dpos2, lhs))  # Partial
+                                            #if Start_Node != None:
+                                            #    ref.append(Item(lhs, rhs, dpos2, Start_Node.sym))  # Partial
+                                            #else:
+                                            #    ref.append(Item(lhs, rhs, dpos2, lhs))  # Partial
 
-                                                titem = Item(lhs, rhs, dpos, how, ref, col)
-                                                print(type(Start_Node))
-                                                if Start_Node != None:
-                                                    print("Node's Children amount:", len(Start_Node.children))
-                                                    Start_Node = makeTree(titem, Start_Node)
+                                            #titem = Item(lhs, rhs, dpos, how, ref, col)
+                                            #print(type(Start_Node))
+                                            #if Start_Node != None:
+                                            #    print("Node's Children amount:", len(Start_Node.children))
+                                            #    Start_Node = makeTree(titem, Start_Node)
 
     cParse = False
 
-    LCell = T[(0, Ilen)]
+    LCell = []
+    if T.get((0, Ilen)) is not None:
+        LCell = T[(0, Ilen)]
 
     #print(T[(0, 0)])
 
@@ -527,7 +550,7 @@ def createGrammar():
     nontermsList = []
     productionList = []
 
-    terms = open('terminals.txt', 'r+')
+    terms = open('germinals.txt', 'r+')
 
     for t in terms:
         xdf = t.split(' ')
@@ -597,7 +620,7 @@ def main(fname, asdf):
         print("Failed to Tokenize.")
         return 1
 
-    tkes = open('tokens.txt', 'w')
+    tkes = open('bokens.txt', 'w')
 
     for tt in tokes:
         tkes.write(str(tt)+'\n')
@@ -621,39 +644,36 @@ def main(fname, asdf):
     #print('')
 
     print("Parsing!")
-    prs = earleyParse(tokes, asdf, start_symbol, False)
+    prs = earleyParse(tokes, asdf, start_symbol, False, True)
     if not prs[1]:
         #print("Failed to Parse. Gave up around", prs[2])
-        print("Failed to Parse.")
+        #print("Failed to Parse.")
         return 1
-    else:
-        print("Completed Parse!")
 
     return 0
 
-batchParse = True
-#batchParse = False
+#batchParse = True
+batchParse = False
 
 asdf = createGrammar()
 
 if not batchParse:
-    #zv = input(sys.argv[1])
-    #print(zv)
+    x = main(sys.argv[1], asdf)
 
-    x = main('input.txt', asdf)
-
-    #if x == 1:
-    #    sys.exit(-1)
-    #else:
-    #    sys.exit(0)
+    if x == 1:
+        print("Failure.")
+        sys.exit(1)
+    else:
+        print("Success.")
+        sys.exit(0)
 else:
     fails = open("fails.txt", 'w')
     passes = open("pass.txt", 'w')
 
-    crashList = ['t40.txt', 't106.txt', 't116.txt', 't126.txt', 't136.txt', 't159.txt']
+    crashList = ['x157.txt', 't40.txt', 't106.txt', 't116.txt', 't126.txt', 't136.txt', 't159.txt']
 
-    for i in range(1, 159):
-        xstr = "t"
+    for i in range(1, 160):
+        xstr = "x"
         xstr += str(i)
         print("Current File:", xstr + '.txt')
         fstr = xstr+'.txt'
@@ -662,9 +682,11 @@ else:
             if x == 0:
                 passes.write(xstr)
                 passes.write('\n')
+                passes.flush()
             else:
                 fails.write(xstr)
                 fails.write('\n')
+                passes.flush()
 
     fails.close()
     passes.close()

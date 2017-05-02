@@ -1,52 +1,30 @@
-If Adele wrote Shakespeare This is incorrect number eleven eight.
+Fourscore and seven years ago.
 
-Romeo, what a wordsmith!
-Juliet, who listens impassively.
+All The Goths, a variable.
+Shylock, another variable.
 
-Act I: Here we go.
+Act I: The first act.
+Scene I: The first scene.
 
-Scene I: Look out Broadway!
+[Enter All The Goths and Shylock]
 
-[Enter Romeo and Juliet]
+All The Goths: You are a toad.
 
-Romeo: Ye are half twice the product of thrice the fashionable beautiful
-    proud olympian and thrice the canopy.  Speak your mind! You are the
-    quotient of the sum of the hard fat-kidneyed half-witted miserable
-    horrible rural misused old joy and half the product of the proud joy
-    and the sum of a sunny yellow friendly wonderful determined brother
-    and the difference between a sickly arrant healthy smooth medicine and
-    your hamster and the square root of the sum of your disgusting cursed
-    smooth grace and the dewdrop!  Speak your mind! Thou are thrice half
-    twice half the quotient between thrice the difference between an
-    attractive warm worthless stormy ingenious proud noble uncle and your
-    amazing infected craven oozing old stone and the remorseless bad
-    prince.  Speak your mind. You art as clearest as the product of your
-    sweet peach and twice the sum of a fancy green-eyed cursed charming
-    olympian and the quotient between thrice the sum of the huge
-    bloodsucking lovely hero and the difference between a smooth
-    determined king and a mistletoe and the quotient of the square root of
-    the sum of the cheap batty clearest demure demure roman and the afeard
-    ugly cow and your handsome hamster.  Speak your mind. Thee art as
-    little as the remainder of the product of twice the product of the
-    mountaineer and half the sum of the gentle craven stinking base
-    stinking uncle and the difference between the just smooth amazing town
-    and the proud phoenix and half the remainder of the quotient between
-    twice the sum of your disgusting small zany determined honest kingdom
-    and the difference between the new-fangled horrible cowardly huge
-    stupid princess and the difference between the bedazzled clearest dumb
-    misused cat and your featureless infected bower and your healthy
-    amazing mistletoe and twice the square root of the sum of your black
-    sorry oozing horrid obsequious hamster and the difference between your
-    horrible ugly foul featureless yellow phoenix and the difference
-    between an evil dusty fashionable proud nose and your mountaineer and
-    the difference between the bottomless fashionable bottomless sunny
-    green-eyed coy embroidered mother and the quotient of the product of
-    half twice the difference between an admirable bluest peaceful
-    invulnerable ingenious olympian and the difference between your dusty
-    dishonest evil hateful lord and the sum of the friendly lovely pony
-    and your bold phoenix and your wonderful plum and the dishonest vile
-    aunt.  Speak your mind!
+[Exeunt]
+
+Scene II: The second scene.
+
+[Enter All The Goths and Shylock]
+
+All The Goths: You are a toad.
+
+[Exeunt]
 
 
+Scene II: The second scene.
 
-[Exeunt omnes]
+[Enter All The Goths and Shylock]
+
+All The Goths: You are a toad.
+
+[Exeunt]
